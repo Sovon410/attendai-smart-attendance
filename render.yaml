@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: ai-attendance-backend
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: ACCESS_TOKEN_MINUTES
+        value: 60
+      - key: ALLOWED_ORIGINS
+        sync: false
