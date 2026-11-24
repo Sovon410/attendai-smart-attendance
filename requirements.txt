@@ -10,8 +10,7 @@ python-jose[cryptography]
 numpy
 pillow
 scikit-learn
-dlib-bin; sys_platform == 'win32'
-dlib; sys_platform != 'win32'
+dlib-bin
 face_recognition_models @ git+https://github.com/ageitgey/face_recognition_models
 setuptools<70
 

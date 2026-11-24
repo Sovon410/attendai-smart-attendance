@@ -17,9 +17,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     liblapack-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies
+# Install Python dependencies (pre-install CPU-only PyTorch to prevent downloading 2.5GB+ of CUDA wheels)
 COPY requirements.txt .
 RUN pip install --no-cache-dir -U pip setuptools wheel && \
+    pip install --no-cache-dir torch torchaudio --index-url https://download.pytorch.org/whl/cpu && \
     pip install --no-cache-dir -r requirements.txt
 
 # Copy backend application code
